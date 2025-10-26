@@ -1,0 +1,20 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}">
+<div layout:fragment="content">
+  <h2>Carrinho</h2>
+  <div th:if="${items.size()} == 0">Carrinho vazio</div>
+  <div class="cart-list">
+    <div th:each="it : ${items}" class="cart-item">
+      <p th:text="${it.cupcake.name} + ' x ' + ${it.qty}"></p>
+      <form th:action="@{/cart/remove/{id}(id=${it.cupcake.id})}" method="post">
+        <button type="submit">Remover</button>
+      </form>
+    </div>
+  </div>
+  <form th:action="@{/orders/checkout}" method="post">
+    <button type="submit">Finalizar compra</button>
+  </form>
+</div>
+</html>

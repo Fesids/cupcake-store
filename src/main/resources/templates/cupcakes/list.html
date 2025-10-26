@@ -1,0 +1,23 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}">
+<div layout:fragment="content">
+  <h2>Lista de Cupcakes</h2>
+  <div class="cupcake-list">
+    <div th:each="c : ${cupcakes}" class="cupcake-item">
+      <h3 th:text="${c.name}"></h3>
+      <p th:text="${c.description}"></p>
+      <p>R$ <span th:text="${c.price}"></span></p>
+      <form th:action="@{/cart/add/{id}(id=${c.id})}" method="post">
+        <input type="number" name="qty" value="1" min="1"/>
+        <button type="submit">Adicionar ao carrinho</button>
+      </form>
+      <a th:href="@{/cupcakes/{id}(id=${c.id})}">Ver</a>
+      <form th:action="@{/cupcakes/{id}/delete(id=${c.id})}" method="post" style="display:inline">
+        <button type="submit">Deletar</button>
+      </form>
+    </div>
+  </div>
+</div>
+</html>

@@ -1,0 +1,17 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}">
+<div layout:fragment="content">
+  <h2>Meus Pedidos</h2>
+  <div class="orders-list">
+    <div th:each="o : ${orders}" class="order-item">
+      <h3>Pedido <span th:text="${o.id}"></span> - <span th:text="${o.status}"></span></h3>
+      <p>Total: <span th:text="${o.total}"></span></p>
+      <div th:each="it : ${o.items}">
+        <p th:text="${it.cupcake.name} + ' x ' + ${it.quantity}"></p>
+      </div>
+    </div>
+  </div>
+</div>
+</html>

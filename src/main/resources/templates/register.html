@@ -1,0 +1,14 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}">
+<div layout:fragment="content">
+  <h2>Registro</h2>
+  <form method="post" th:action="@{/register}">
+    <label>Nome<input name="name" required/></label><br/>
+    <label>Email<input type="email" name="email" required/></label><br/>
+    <label>Senha<input type="password" name="password" required/></label><br/>
+    <button type="submit">Cadastrar</button>
+  </form>
+</div>
+</html>

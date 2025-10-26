@@ -1,0 +1,36 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+  <meta charset="utf-8"/>
+  <title>Cupcake Store</title>
+  <link rel="stylesheet" th:href="@{/css/styles.css}"/>
+  <script th:src="@{/js/cart.js}" defer></script>
+</head>
+<body>
+<header>
+  <h1><a th:href="@{/}">Cupcake Store</a></h1>
+  <nav>
+    <a class="nav-button" th:href="@{/cupcakes}">Cupcakes</a>
+    <a class="nav-button" th:href="@{/cupcakes/new}">Novo Cupcake</a>
+    <a class="nav-button" th:href="@{/cart}">Carrinho</a>
+    <a class="nav-button" th:href="@{/orders/list}">Meus Pedidos</a>
+    <th:block th:if="${session.userId == null}">
+      <a class="nav-button" th:href="@{/login}">Login</a>
+    </th:block>
+    <th:block th:unless="${session.userId == null}">
+      <form th:action="@{/logout}" method="post" style="display: inline;">
+        <button type="submit" class="nav-button">Logout</button>
+      </form>
+    </th:block>
+  </nav>
+</header>
+
+<main layout:fragment="content">
+</main>
+
+<footer>
+  <p>&copy; 2025 Cupcake Store</p>
+</footer>
+</body>
+</html>
