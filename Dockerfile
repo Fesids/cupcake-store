@@ -20,4 +20,4 @@ ENV PORT 8080
 EXPOSE 8080
 
 
-CMD ["java", "-jar", "target/cupcake-store-0.0.1-SNAPSHOT.jar"]
+CMD ["java", "-jar", "target/cupcakestore-0.0.1-SNAPSHOT.jar"]
